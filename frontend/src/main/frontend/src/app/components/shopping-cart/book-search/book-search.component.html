@@ -1,0 +1,11 @@
+<div id="search-component" class="search-component">
+    <md-input-container>
+        <input mdInput placeholder="Search Book" #searchBox (keyup)="search(searchBox.value)" />
+    </md-input-container>
+    <div>
+        <a *ngFor="let book of books | async"
+           (click)="gotoDetail(book)" class="search-result" >
+            <h3 md-line>{{book.bookName}}</h3>
+        </a>
+    </div>
+</div>

@@ -1,0 +1,29 @@
+<div>
+    <h3>{{user?.username}}'s orders</h3>
+    <div>
+        <div>
+            <button md-icon-button (click)="goBack()">
+                <md-icon>arrow_back</md-icon>
+                Back
+            </button>
+        </div>
+        <div align="right">
+            <button md-mini-fab color="warn" (click)="createOrEdit()" >
+                <md-icon>add</md-icon>
+            </button>
+        </div>
+    </div>
+    <md-list dense>
+        <md-list-item *ngFor="let order of orders">
+            <md-icon md-list-icon>label</md-icon>
+            <h3 md-line>{{order.orderId}} {{order.orderTime}}</h3>
+            <md-menu #userMenu="mdMenu">
+                <button md-menu-item (click)="createOrEdit(order)">edit</button>
+                <button md-menu-item (click)="delete(order)">delete</button>
+            </md-menu>
+            <button md-icon-button [mdMenuTriggerFor]="userMenu">
+                <md-icon>more_vert</md-icon>
+            </button>
+        </md-list-item>
+    </md-list>
+</div>

@@ -1,0 +1,21 @@
+<div class="book-card" align="center">
+    <md-card>
+        <md-card-title>
+            {{book.bookName}}
+        </md-card-title>
+        
+        <img height="400" width="400" src="/files?bookId={{book.bookId}}">
+        
+        <md-card-content>
+            <p>{{book.bookDesc}}</p>
+            <strong>Price: {{book.bookPrice}}</strong>
+        </md-card-content>
+        
+        <md-card-actions>
+            <button md-button color="primary" (click)="goBack()">
+                <md-icon>arror_back</md-icon>
+                Back
+            </button>
+        </md-card-actions>
+    </md-card>
+</div>

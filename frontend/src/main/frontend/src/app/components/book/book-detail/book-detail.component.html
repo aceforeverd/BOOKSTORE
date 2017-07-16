@@ -1,0 +1,53 @@
+<div *ngIf="data" align="center">
+    <h2 md-dialog-title>{{data.action}} a Book</h2>
+    <div *ngIf="data.action != 'View'">
+        <md-dialog-content>
+            <img height="220" width="220" src="/files?bookId={{data.book.bookId}}">
+            <div>
+                <md-input-container>
+                    <input mdInput placeholder="book name" [value]="data.book.bookName"
+                           [(ngModel)]="data.book.bookName" required>
+                </md-input-container>
+            </div>
+            
+            <div>
+                <md-input-container>
+                    <input mdInput placeholder="book Description"
+                           [(ngModel)]="data.book.bookDesc" required>
+                </md-input-container>
+            </div>
+            
+            <div>
+                <md-input-container>
+                    <input mdInput placeholder="book price"
+                           [(ngModel)]="data.book.bookPrice" required>
+                </md-input-container>
+            </div>
+            
+            <div>
+                <form method="POST" action="/files?bookId={{data.book.bookId}}" enctype="multipart/form-data">
+                    <input type="file" name="file">
+                    <input value="Upload" type="submit">
+                </form>
+            </div>
+        
+        </md-dialog-content>
+    </div>
+    
+    <div *ngIf="data.action === 'View'">
+        <md-dialog-content>
+            <h4><strong>{{data.book.bookName}}</strong></h4>
+            <img height="220" width="220" src="/files?bookId={{data.book.bookId}}">
+            <div>
+                <p>{{data.book.bookDesc}}</p>
+            </div>
+            <p>price: {{data.book.bookPrice}}</p>
+            
+        </md-dialog-content>
+    </div>
+    
+    <md-dialog-actions>
+        <button type="button" md-button md-dialog-close (click)="back()">Cancel</button>
+        <button *ngIf="data.action != 'View'" type="button" md-button color="primary" md-dialog-close="true" (click)="save()">Save</button>
+    </md-dialog-actions>
+</div>

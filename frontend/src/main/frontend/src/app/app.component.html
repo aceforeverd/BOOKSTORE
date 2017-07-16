@@ -1,0 +1,43 @@
+<md-sidenav-container>
+    <md-sidenav mode="side" #sidebar>
+        slide
+    </md-sidenav>
+    <md-toolbar color="primary">
+        <div class="head-left">
+            <button md-icon-button color="warn" (click)="sidebar.toggle()">
+                <md-icon>menu</md-icon>
+            </button>
+        </div>
+        <md-nav-list>
+            <button md-button color="accent" routerLinkActive="active" routerLink="/login">
+                <md-icon>account_circle</md-icon>
+                login
+            </button>
+            <button md-button color="accent" routerLinkActive="active" routerLink="/userList">
+                <md-icon>people</md-icon>
+                Users
+            </button>
+            <button md-button color="accent" routerLink="/bookList" routerLinkActive="active" >
+                <md-icon>library_books</md-icon>
+                Books
+            </button>
+            <button md-button color="accent" routerLinkActive="active" routerLink="/orderList">
+                <md-icon>shopping_basket</md-icon>
+                Orders
+            </button>
+            <button md-button color="accent" routerLink="/shop" routerLinkActive="active">
+                <md-icon>shop</md-icon>
+                Shopping
+            </button>
+        </md-nav-list>
+    </md-toolbar>
+    <!--
+    <div align="right">
+        <md-input-container>
+            <input mdInput placeholder="Search">
+            <md-icon mdSuffix>search</md-icon>
+        </md-input-container>
+    </div>
+    -->
+    <router-outlet></router-outlet>
+</md-sidenav-container>

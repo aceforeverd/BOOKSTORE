@@ -1,0 +1,40 @@
+<div align="center">
+    <form class="login-form" novalidate *ngIf="!currentUser"
+          #loginForm="ngForm" (ngSubmit)="login(loginForm.value)">
+        <div>
+            <md-input-container>
+                <input mdInput class="login-input" placeholder="username" type="text"
+                       #username="ngModel" name="username" ngModel required>
+            </md-input-container>
+            <div class="alter alter-warn"
+                    [hidden]="username.valid || username.pristine">
+                Oops, username can not be empty.
+            </div>
+        </div>
+
+        <div>
+            <md-input-container>
+                <input mdInput class="login-input" placeholder="password" type="password"
+                       #password="ngModel" name="password" ngModel required>
+            </md-input-container>
+            <div class="alter alter-warn"
+                    [hidden]="password.valid || password.pristine">
+                Oops, password can not be empty.
+            </div>
+        </div>
+        
+        <div>{{errorMsg}}</div>
+
+        <div>
+            <button md-raised-button color="primary"
+                    [disabled]="!loginForm.form.valid">
+                login
+            </button>
+            <button md-raised-button routerLink="/register" color="accent">register</button>
+        </div>
+    </form>
+    
+    <div class="message" *ngIf="currentUser">
+        <h2>you are loged in as {{currentUser.username}}</h2>
+    </div>
+</div>

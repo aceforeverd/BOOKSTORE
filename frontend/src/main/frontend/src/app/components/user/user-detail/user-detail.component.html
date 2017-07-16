@@ -1,0 +1,35 @@
+<div *ngIf="data">
+    <h2 md-dialog-title>{{data.action}} a User</h2>
+    <md-dialog-content>
+        <div *ngIf="data.user.userId">
+            <img height="120" width="120" src="/files?userId={{data.user.userId}}">
+        </div>
+        <div>
+            <md-input-container>
+                <input mdInput placeholder="usename" [value]="data.user.username"
+                       [(ngModel)]="data.user.username" required>
+            </md-input-container>
+            
+            <md-input-container>
+                <input mdInput placeholder="password" [value]="data.user.password"
+                       [(ngModel)]="data.user.password" required>
+            </md-input-container>
+        </div>
+        
+        <div>
+            <md-input-container>
+                <input mdInput placeholder="email" [value]="data.user.email"
+                       [(ngModel)]="data.user.email" required>
+            </md-input-container>
+            
+            <md-input-container>
+                <input mdInput placeholder="phone" [value]="data.user.phone" [(ngModel)]="data.user.phone">
+            </md-input-container>
+        </div>
+    </md-dialog-content>
+    
+    <md-dialog-actions>
+        <button type="button" md-button md-dialog-close (click)="goBack()">Cancel</button>
+        <button type="button" md-button color="primary" md-dialog-close="true" (click)="saveUser()">Save</button>
+    </md-dialog-actions>
+</div>

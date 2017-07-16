@@ -1,0 +1,13 @@
+<div align="center" *ngIf="user">
+    <!--
+    <md-card>
+        <md-card-header>
+            <span>{{user.userId}}</span> <strong>{{user.username}}</strong>
+        </md-card-header>
+        -->
+        
+            <form method="post" action="/files?userid={{user.userId}}" enctype="multipart/form-data">
+                <input type="file" accept="image/*">
+                <button type="submit">Upload</button>
+            </form>
+</div>

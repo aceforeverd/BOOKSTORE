@@ -1,0 +1,20 @@
+<div>
+    <div>
+        <button md-mini-fab color="warn" (click)="addBook()" >
+            <md-icon>add</md-icon>
+        </button>
+    </div>
+    <md-list dense>
+        <md-list-item *ngFor="let book of books">
+            <md-icon md-list-icon>book</md-icon>
+            <h3 md-line>{{book.bookName}}</h3>
+            <md-menu #userMenu="mdMenu">
+                <button md-menu-item (click)="edit(book)">edit</button>
+                <button md-menu-item (click)="delete(book)">delete</button>
+            </md-menu>
+            <button md-icon-button [mdMenuTriggerFor]="userMenu">
+                <md-icon>more_vert</md-icon>
+            </button>
+        </md-list-item>
+    </md-list>
+</div>

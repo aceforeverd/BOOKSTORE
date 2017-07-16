@@ -1,0 +1,26 @@
+<div class="order-view">
+    <div>
+        <h3 *ngIf="order?.orderId">Order id: {{order.orderId}}</h3>
+        <h4>Ordered by {{order?.orderUser?.username}}</h4>
+        <h4 *ngIf="order?.orderTime">order time: {{order.orderTime}}</h4>
+        <h4 *ngIf="order?.orderPrice">Price: {{order.orderPrice}}</h4>
+    </div>
+    
+    <md-list>
+        <md-list-item *ngFor="let orderItem of order.orderApplyEntities" class="book-card">
+            <md-icon md-list-icon>book</md-icon>
+            <h3 md-line>{{orderItem.bookEntity.bookName}}</h3>
+            <p>ordered number: {{orderItem.bookNumber}}</p>
+            
+            <button md-icon-button [mdMenuTriggerFor]="bookMenu" >
+                <md-icon>more_vert</md-icon>
+            </button>
+            
+            <md-menu #bookMenu >
+                <button md-menu-item (click)="goDetail(orderItem.bookEntity)">
+                    view Detail
+                </button>
+            </md-menu>
+        </md-list-item>
+    </md-list>
+</div>

@@ -1,0 +1,68 @@
+<div align="center" class="shopping">
+    
+    <div *ngIf="confirmOrder">
+        <app-order-view [order]="order"></app-order-view>
+        <button md-button (click)="continueShop()">Continue Shop</button>
+        <button md-raised-button color="primary" [disabled]="order.orderPrice === 0 || !order.orderUser"
+                (click)="confirm()">confirm</button>
+        
+        <div class="alert" *ngIf="!order.orderUser">
+            Login first to confirm your order!
+            <button md-button color="warn" routerLink="/login">login now</button>
+        </div>
+    </div>
+    
+    <div *ngIf="!confirmOrder">
+        <md-toolbar>
+            <div align="right" class="checkout">
+                <button md-raised-button color="primary" (click)="makeOrder()">
+                    <md-icon>done</md-icon>
+                    Checkout
+                </button>
+                <button *ngIf="currentUser" md-raised-button color="warn" (click)="logout()">Logout</button>
+                <button *ngIf="!currentUser" md-raised-button color="warn" (click)="login()">Login</button>
+                <br><p>total price: {{order.orderPrice}}</p>
+            </div>
+        </md-toolbar>
+        
+        <div class="searchbar">
+            <app-book-search></app-book-search>
+        </div>
+        
+        <div *ngFor="let book of books; index as i" class="book-card">
+            <md-card >
+                <md-card-header>
+                    <div md-card-avatar class="header-img" ></div>
+                    <md-card-title>
+                        <span class="badge" >{{i+1}}</span> <strong>{{book.bookName}}</strong>
+                        <div class="book-detail">
+                            <button md-raised-button color="accent" (click)="goDetail(book.bookId)" >Detail</button>
+                        </div>
+                    </md-card-title>
+                </md-card-header>
+                
+                <img width="220" height="220" class="image" src="/files?bookId={{book.bookId}}" >
+                <md-card-content>
+                    <h4>Price:  {{book.bookPrice}}</h4>
+                </md-card-content>
+                
+                <md-card-actions>
+                    <h5>ordered number: {{findOrder(book)?.bookNumber || 0}}</h5>
+                    <button md-button (click)="addToCart(book)">
+                        <md-icon>add_circle</md-icon>
+                        Add
+                    </button>
+                    <button md-button (click)="decrease(book)">
+                        <md-icon>remove_circle</md-icon>
+                        Decrease
+                    </button>
+                    <button md-button (click)="remove(book)">
+                        <md-icon>clear</md-icon>
+                        Remove
+                    </button>
+                </md-card-actions>
+            </md-card>
+        </div>
+    </div>
+</div>
+

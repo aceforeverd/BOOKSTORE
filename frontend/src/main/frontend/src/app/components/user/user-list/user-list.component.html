@@ -1,0 +1,21 @@
+<div class="userlist">
+    <div>
+        <button md-mini-fab color="warn" (click)="addUser()" >
+            <md-icon>add</md-icon>
+        </button>
+    </div>
+    <md-list dense>
+        <md-list-item *ngFor="let user of users">
+            <md-icon md-list-icon>face</md-icon>
+            <h3 md-line>{{user.username}}</h3>
+            <md-menu #userMenu="mdMenu">
+                <button md-menu-item (click)="edit(user)">edit</button>
+                <button md-menu-item (click)="deleteUser(user)">delete</button>
+                <button md-menu-item (click)="goOrders(user)" >Orders</button>
+            </md-menu>
+            <button md-icon-button [mdMenuTriggerFor]="userMenu">
+                <md-icon>more_vert</md-icon>
+            </button>
+        </md-list-item>
+    </md-list>
+</div>

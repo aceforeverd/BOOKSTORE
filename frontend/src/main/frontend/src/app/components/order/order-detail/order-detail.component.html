@@ -1,0 +1,32 @@
+<div *ngIf="data" align="center">
+    <h2 md-dialog-title>{{data.action}} a Order</h2>
+    <md-dialog-content>
+        <div>
+            <div>
+                <p>order id: {{data.order.orderId}}</p>
+                <p>order of {{data.order?.orderUser?.username || 'nobody' }}</p>
+            </div>
+            <p>order time: {{data.order.orderTime}}</p>
+        </div>
+        
+        <div>
+            <md-list>
+                <md-list-item *ngFor="let orderItem of data.order.orderApplyEntities">
+                    <md-icon md-list-icon>book</md-icon>
+                    <h3 md-line>{{orderItem.bookEntity.bookName}}, number: {{orderItem.bookNumber}},
+                        price: {{orderItem.bookEntity.bookPrice * orderItem.bookNumber}}</h3>
+                </md-list-item>
+            </md-list>
+        </div>
+        <md-input-container>
+            <input mdInput placeholder="order price"
+                   [(ngModel)]="data.order.orderPrice" required>
+        </md-input-container>
+    
+    </md-dialog-content>
+    
+    <md-dialog-actions>
+        <button type="button" md-button md-dialog-close (click)="back()">Cancel</button>
+        <button type="button" md-button color="primary" md-dialog-close="true" (click)="save()">Save</button>
+    </md-dialog-actions>
+</div>

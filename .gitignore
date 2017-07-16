@@ -1,0 +1,82 @@
+# Compiled class file
+*.class
+
+# git
+*.orig
+
+# Log file
+*.log
+
+# BlueJ files
+*.ctxt
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# Package Files #
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
+
+*.DS_Store
+Thumbs.db
+
+bin
+target
+build/
+.gradle
+
+# IDES
+.classpath
+.project
+.settings
+.vscode/*
+*.sublime-workspace
+*.launch
+.c9/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.swp
+
+# intellij
+*.iml
+*.ipr
+*.iws
+*.idea
+
+# test
+accessingdataneo4j.db
+dependency-reduced-pom.xml
+out
+README.html
+
+# front
+# e2e
+e2e/*.js
+e2e/*.map
+
+node_modules
+node
+
+# compiled output
+dist
+tmp
+o# misc
+.sass-cache
+connect.lock
+coverage
+libpeerconnection.log
+npm-debug.log
+testem.log
+typings
+
+ut-tsc
+application.properties
